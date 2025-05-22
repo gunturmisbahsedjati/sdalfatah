@@ -30,6 +30,12 @@ switch ($opsi) {
     case 'setPTK':
         require_once(PUB_DIR . 'modul/data-ptk/data_ptk_aksi.php');
         break;
+    case 'daftarGaleri':
+        require_once(PUB_DIR . 'modul/data-galeri/data_galeri.php');
+        break;
+    case 'setGaleri':
+        require_once(PUB_DIR . 'modul/data-galeri/data_galeri_aksi.php');
+        break;
 
 
     default:

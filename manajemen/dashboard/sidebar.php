@@ -29,7 +29,7 @@
                 </ul>
             </li>
             <li class="">
-                <a class="" href="imageList">
+                <a class="" href="daftarGaleri">
                     <i class="fa fa-image"></i>
                     <span>Data Galeri</span>
                 </a>

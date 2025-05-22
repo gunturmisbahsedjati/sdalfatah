@@ -63,7 +63,7 @@ $title = "Sejarah Sekolah";
               <li><a href="../ptk">Kepala Sekolah, Guru dan Staf</a></li>
             </ul>
           </li>
-          <li><a class="nav-link" href="#">Galeri</a></li>
+          <li><a class="nav-link" href="../galeri">Galeri</a></li>
           <li><a class="nav-link" href="#">Pengumuman</a></li>
           <li class="dropdown"><a href="#"><span>Berita</span> <i class="bi bi-chevron-down"></i></a>
             <ul>

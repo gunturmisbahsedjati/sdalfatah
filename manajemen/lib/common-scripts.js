@@ -557,3 +557,65 @@ $(document).ready(function () {
     $('.modal .modal-dialog').attr('class', 'modal-dialog modal-lg');
   });
 });
+
+//manajemen galeri
+$(document).ready(function () {
+  $('#addImage').on('show.bs.modal', function (e) {
+    $('.modal .modal-dialog').attr('class', 'modal-dialog modal-md');
+    document.getElementById("load-add-image").style.display = "block";
+    document.getElementById("add-image").style.display = "none";
+    $.ajax({
+      url: 'dashboard/modul/data-galeri/modal/tambah_galeri',
+      success: function (data) {
+        document.getElementById("load-add-image").style.display = "none";
+        document.getElementById("add-image").style.display = "block";
+        $('.add-image').html(data);
+      }
+    });
+  });
+  $('.modal').on('hide.bs.modal', function (e) {
+    $('.modal .modal-dialog').attr('class', 'modal-dialog modal-md');
+  });
+});
+$(document).ready(function () {
+  $('#editImage').on('show.bs.modal', function (e) {
+    $('.modal .modal-dialog').attr('class', 'modal-dialog modal-md');
+    document.getElementById("load-edit-image").style.display = "block";
+    document.getElementById("edit-image").style.display = "none";
+    const id = $(e.relatedTarget).data('id');
+    $.ajax({
+      type: 'post',
+      url: 'dashboard/modul/data-galeri/modal/ubah_galeri',
+      data: { 'id': id },
+      success: function (data) {
+        document.getElementById("load-edit-image").style.display = "none";
+        document.getElementById("edit-image").style.display = "block";
+        $('.edit-image').html(data);
+      }
+    });
+  });
+  $('.modal').on('hide.bs.modal', function (e) {
+    $('.modal .modal-dialog').attr('class', 'modal-dialog modal-md');
+  });
+});
+$(document).ready(function () {
+  $('#delImage').on('show.bs.modal', function (e) {
+    $('.modal .modal-dialog').attr('class', 'modal-dialog modal-md');
+    document.getElementById("load-del-image").style.display = "block";
+    document.getElementById("del-image").style.display = "none";
+    const id = $(e.relatedTarget).data('id');
+    $.ajax({
+      type: 'post',
+      url: 'dashboard/modul/data-galeri/modal/hapus_galeri',
+      data: { 'id': id },
+      success: function (data) {
+        document.getElementById("load-del-image").style.display = "none";
+        document.getElementById("del-image").style.display = "block";
+        $('.del-image').html(data);
+      }
+    });
+  });
+  $('.modal').on('hide.bs.modal', function (e) {
+    $('.modal .modal-dialog').attr('class', 'modal-dialog modal-md');
+  });
+});
