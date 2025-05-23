@@ -36,7 +36,7 @@ if (isset($_POST['tambahGambar'])) {
             echo "<script> window.location='daftarGaleri'; </script>";
         }
     } else {
-        $_SESSION['alert'] = "Toast.fire({icon: 'error',title: 'Data Gambar gagal disimpan'})";
+        $_SESSION['alert'] = "Toast.fire({icon: 'error',title: 'Silahkan menyertakan gambar'})";
         echo "<script> window.location='daftarGaleri'; </script>";
     }
 } elseif (isset($_POST['ubahStatus'])) {

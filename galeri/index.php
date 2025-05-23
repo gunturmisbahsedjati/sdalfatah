@@ -1,6 +1,6 @@
 <?php
 include_once '../manajemen/inc/inc.koneksi.php';
-$viewGaleri = mysqli_query($myConnection, "select * from tb_galeri order by id_galeri desc");
+$viewGaleri = mysqli_query($myConnection, "select * from tb_galeri order by created_date desc");
 $title = "Galeri Kegiatan ";
 ?>
 <!DOCTYPE html>
@@ -64,11 +64,11 @@ $title = "Galeri Kegiatan ";
             </ul>
           </li>
           <li><a class="nav-link" href="../galeri">Galeri</a></li>
-          <li><a class="nav-link" href="#">Pengumuman</a></li>
+          <li><a class="nav-link" href="../#recent-blog-pengumuman">Pengumuman</a></li>
           <li class="dropdown"><a href="#"><span>Berita</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Berita Sekolah</a></li>
-              <li><a href="#">Berita Prestasi</a></li>
+              <li><a href="../berita/filter/sekolah">Berita Sekolah</a></li>
+              <li><a href="../berita/filter/prestasi">Berita Prestasi</a></li>
             </ul>
           </li>
           <li><a class="getstarted " href="#">PPDB</a></li>

@@ -36,6 +36,21 @@ switch ($opsi) {
     case 'setGaleri':
         require_once(PUB_DIR . 'modul/data-galeri/data_galeri_aksi.php');
         break;
+    case 'daftarPengumuman':
+        require_once(PUB_DIR . 'modul/data-pengumuman/data_pengumuman.php');
+        break;
+    case 'setPengumuman':
+        require_once(PUB_DIR . 'modul/data-pengumuman/data_pengumuman_aksi.php');
+        break;
+    case 'daftarBerita':
+        require_once(PUB_DIR . 'modul/data-berita/data_berita.php');
+        break;
+    case 'tagBerita':
+        require_once(PUB_DIR . 'modul/data-berita/data_tag_berita.php');
+        break;
+    case 'setBerita':
+        require_once(PUB_DIR . 'modul/data-berita/data_berita_aksi.php');
+        break;
 
 
     default:

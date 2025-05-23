@@ -34,25 +34,28 @@
                     <span>Data Galeri</span>
                 </a>
             </li>
-            <li class="sub-menu">
-                <a href="javascript:;">
+            <li class="">
+                <a class="" href="daftarPengumuman">
                     <i class="fa fa-newspaper-o"></i>
                     <span>Data Pengumuman</span>
                 </a>
-                <ul class="sub">
-                    <li><a href="#">Daftar Berita</a></li>
-                </ul>
             </li>
-            <li class="sub-menu">
+            <li class="">
+                <a class="" href="daftarBerita">
+                    <i class="fa fa-file-text-o"></i>
+                    <span>Data Berita</span>
+                </a>
+            </li>
+            <!-- <li class="sub-menu">
                 <a href="javascript:;">
                     <i class="fa fa-file-text-o"></i>
                     <span>Data Berita</span>
                 </a>
                 <ul class="sub">
-                    <li><a href="#">Daftar Tag Berita</a></li>
-                    <li><a href="#">Daftar Berita</a></li>
+                    <li><a href="tagBerita">Daftar Tag Berita</a></li>
+                    <li><a href="daftarBerita">Daftar Berita</a></li>
                 </ul>
-            </li>
+            </li> -->
             <li class="sub-menu">
                 <a href="javascript:;">
                     <i class="fa fa-graduation-cap"></i>

@@ -1,5 +1,6 @@
 <?php
 include_once './manajemen/inc/inc.koneksi.php';
+include_once './manajemen/inc/inc.library.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +42,7 @@ include_once './manajemen/inc/inc.koneksi.php';
 </head>
 
 <body>
-  <div class="cr cr-bottom cr-right cr-sticky cr-red">Dev Mode</div>
+
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
@@ -62,11 +63,11 @@ include_once './manajemen/inc/inc.koneksi.php';
             </ul>
           </li>
           <li><a class="nav-link" href="galeri">Galeri</a></li>
-          <li><a class="nav-link" href="#">Pengumuman</a></li>
+          <li><a class="nav-link" href="pengumuman">Pengumuman</a></li>
           <li class="dropdown"><a href="#"><span>Berita</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Berita Sekolah</a></li>
-              <li><a href="#">Berita Prestasi</a></li>
+              <li><a href="berita/filter/sekolah">Berita Sekolah</a></li>
+              <li><a href="berita/filter/prestasi">Berita Prestasi</a></li>
             </ul>
           </li>
           <li><a class="getstarted " href="#">PPDB</a></li>
@@ -371,7 +372,7 @@ include_once './manajemen/inc/inc.koneksi.php';
         <div class="row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">
 
           <?php
-          $viewGaleri = mysqli_query($myConnection, "select * from tb_galeri where status_headline = 1 order by id_galeri desc");
+          $viewGaleri = mysqli_query($myConnection, "select * from tb_galeri where status_headline = 1 order by created_date desc");
           while ($rowGaleri = mysqli_fetch_array($viewGaleri)) {
           ?>
             <div class="col-lg-4 col-md-6 portfolio-item filter-app">
@@ -396,7 +397,7 @@ include_once './manajemen/inc/inc.koneksi.php';
     </section><!-- End Portfolio Section -->
 
 
-    <section id="recent-blog-posts" class="recent-blog-posts">
+    <section id="recent-blog-pengumuman" class="recent-blog-posts">
 
       <div class="container" data-aos="fade-up">
 
@@ -407,33 +408,18 @@ include_once './manajemen/inc/inc.koneksi.php';
 
         <div class="row">
 
-          <div class="col-lg-4">
-            <div class="post-box">
-              <div class="post-img"><img src="assets/img/blog/blog-1.jpg" class="img-fluid" alt=""></div>
-              <span class="post-date">Tue, September 15</span>
-              <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis voluptatem consequuntur sit</h3>
-              <a href="blog-singe.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+          <?php
+          $sqlPengumuman = mysqli_query($myConnection, "select * from tb_pengumuman where status_headline = 1 order by created_date desc");
+          while ($viewPengumuman = mysqli_fetch_array($sqlPengumuman)) { ?>
+            <div class="col-lg-4">
+              <div class="post-box">
+                <div class="post-img"><img src="assets/img/<?= $viewPengumuman['foto_pengumuman'] ?>" class="img-fluid" alt=""></div>
+                <span class="post-date"><?= hariTgl(tanggal($viewPengumuman['created_date'])) . ', ' . Indonesia2Tgl($viewPengumuman['created_date']) ?></span>
+                <h3 class="post-title"><?= $viewPengumuman['judul_pengumuman'] ?></h3>
+                <a href="pengumuman/detail/<?= $viewPengumuman['slug_pengumuman'] ?>" target="_blank" class="readmore stretched-link mt-auto"><span>Lihat detail...</span><i class="bi bi-arrow-right"></i></a>
+              </div>
             </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="post-box">
-              <div class="post-img"><img src="assets/img/blog/blog-2.jpg" class="img-fluid" alt=""></div>
-              <span class="post-date">Fri, August 28</span>
-              <h3 class="post-title">Et repellendus molestiae qui est sed omnis voluptates magnam</h3>
-              <a href="blog-singe.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="post-box">
-              <div class="post-img"><img src="assets/img/blog/blog-3.jpg" class="img-fluid" alt=""></div>
-              <span class="post-date">Mon, July 11</span>
-              <h3 class="post-title">Quia assumenda est et veritatis aut quae</h3>
-              <a href="blog-singe.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-
+          <?php } ?>
         </div>
 
       </div>
@@ -447,37 +433,23 @@ include_once './manajemen/inc/inc.koneksi.php';
 
         <header class="section-header">
           <!-- <h2>Berita Sekolah</h2> -->
-          <p>Berita & Artikel</p>
+          <p>Berita Sekolah & Prestasi</p>
         </header>
 
         <div class="row">
 
-          <div class="col-lg-4">
-            <div class="post-box">
-              <div class="post-img"><img src="assets/img/blog/blog-1.jpg" class="img-fluid" alt=""></div>
-              <span class="post-date">Tue, September 15</span>
-              <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis voluptatem consequuntur sit</h3>
-              <a href="blog-singe.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+          <?php
+          $sqlBerita = mysqli_query($myConnection, "select * from tb_berita where status_headline = 1 order by created_date desc");
+          while ($viewBerita = mysqli_fetch_array($sqlBerita)) { ?>
+            <div class="col-lg-4">
+              <div class="post-box">
+                <div class="post-img"><img src="assets/img/<?= $viewBerita['foto_berita'] ?>" class="img-fluid" alt=""></div>
+                <span class="post-date"><?= hariTgl(tanggal($viewBerita['created_date'])) . ', ' . Indonesia2Tgl($viewBerita['created_date']) ?></span>
+                <h3 class="post-title"><?= $viewBerita['judul_berita'] ?></h3>
+                <a href="berita/detail/<?= $viewBerita['slug_berita'] ?>" target="_blank" class="readmore stretched-link mt-auto"><span>Lihat detail...</span><i class="bi bi-arrow-right"></i></a>
+              </div>
             </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="post-box">
-              <div class="post-img"><img src="assets/img/blog/blog-2.jpg" class="img-fluid" alt=""></div>
-              <span class="post-date">Fri, August 28</span>
-              <h3 class="post-title">Et repellendus molestiae qui est sed omnis voluptates magnam</h3>
-              <a href="blog-singe.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="post-box">
-              <div class="post-img"><img src="assets/img/blog/blog-3.jpg" class="img-fluid" alt=""></div>
-              <span class="post-date">Mon, July 11</span>
-              <h3 class="post-title">Quia assumenda est et veritatis aut quae</h3>
-              <a href="blog-singe.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
+          <?php } ?>
 
         </div>
 

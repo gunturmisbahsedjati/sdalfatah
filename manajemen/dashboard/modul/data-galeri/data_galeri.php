@@ -59,7 +59,7 @@ if (isset($_SESSION['alert'])) : ?>
                         <tbody>
                             <?php
                             $no = 1;
-                            $sqlImage = mysqli_query($myConnection, "select * from tb_galeri order by id_galeri, status_headline desc");
+                            $sqlImage = mysqli_query($myConnection, "select * from tb_galeri order by status_headline desc, created_date desc");
                             while ($viewImage = mysqli_fetch_array($sqlImage)) {
                                 if ($viewImage['status_headline'] == 1) {
                                     $status = 'Tampil di-Headline';

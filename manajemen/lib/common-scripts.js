@@ -619,3 +619,237 @@ $(document).ready(function () {
     $('.modal .modal-dialog').attr('class', 'modal-dialog modal-md');
   });
 });
+
+//manajemen pengumuman
+$(document).ready(function () {
+  $('#addPengumuman').on('show.bs.modal', function (e) {
+    $('.modal .modal-dialog').attr('class', 'modal-dialog modal-md');
+    document.getElementById("load-add-pengumuman").style.display = "block";
+    document.getElementById("add-pengumuman").style.display = "none";
+    $.ajax({
+      url: 'dashboard/modul/data-pengumuman/modal/tambah_pengumuman',
+      success: function (data) {
+        document.getElementById("load-add-pengumuman").style.display = "none";
+        document.getElementById("add-pengumuman").style.display = "block";
+        $('.add-pengumuman').html(data);
+        $('#isi_pengumuman').summernote({
+          placeholder: 'Deskripsi Pengumuman',
+          height: 100,
+          toolbar: [
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']]
+          ]
+        });
+      }
+    });
+  });
+  $('.modal').on('hide.bs.modal', function (e) {
+    $('.modal .modal-dialog').attr('class', 'modal-dialog modal-md');
+  });
+});
+$(document).ready(function () {
+  $('#editPengumuman').on('show.bs.modal', function (e) {
+    $('.modal .modal-dialog').attr('class', 'modal-dialog modal-md');
+    document.getElementById("load-edit-pengumuman").style.display = "block";
+    document.getElementById("edit-pengumuman").style.display = "none";
+    const id = $(e.relatedTarget).data('id');
+    $.ajax({
+      type: 'post',
+      url: 'dashboard/modul/data-pengumuman/modal/ubah_pengumuman',
+      data: { 'id': id },
+      success: function (data) {
+        document.getElementById("load-edit-pengumuman").style.display = "none";
+        document.getElementById("edit-pengumuman").style.display = "block";
+        $('.edit-pengumuman').html(data);
+        $('#ubah_isi_pengumuman').summernote({
+          placeholder: 'Deskripsi Pengumuman',
+          height: 100,
+          toolbar: [
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']]
+          ]
+        });
+      }
+    });
+  });
+  $('.modal').on('hide.bs.modal', function (e) {
+    $('.modal .modal-dialog').attr('class', 'modal-dialog modal-md');
+  });
+});
+$(document).ready(function () {
+  $('#delPengumuman').on('show.bs.modal', function (e) {
+    $('.modal .modal-dialog').attr('class', 'modal-dialog modal-md');
+    document.getElementById("load-del-pengumuman").style.display = "block";
+    document.getElementById("del-pengumuman").style.display = "none";
+    const id = $(e.relatedTarget).data('id');
+    $.ajax({
+      type: 'post',
+      url: 'dashboard/modul/data-pengumuman/modal/hapus_pengumuman',
+      data: { 'id': id },
+      success: function (data) {
+        document.getElementById("load-del-pengumuman").style.display = "none";
+        document.getElementById("del-pengumuman").style.display = "block";
+        $('.del-pengumuman').html(data);
+        $('#hapus_isi_pengumuman').summernote("disable");
+      }
+    });
+  });
+  $('.modal').on('hide.bs.modal', function (e) {
+    $('.modal .modal-dialog').attr('class', 'modal-dialog modal-md');
+  });
+});
+
+//manajemen berita
+$(document).ready(function () {
+  $('#addTag').on('show.bs.modal', function (e) {
+    $('.modal .modal-dialog').attr('class', 'modal-dialog modal-sm');
+    document.getElementById("load-add-tag").style.display = "block";
+    document.getElementById("add-tag").style.display = "none";
+    $.ajax({
+      url: 'dashboard/modul/data-berita/modal/tambah_tag_berita',
+      success: function (data) {
+        document.getElementById("load-add-tag").style.display = "none";
+        document.getElementById("add-tag").style.display = "block";
+        $('.add-tag').html(data);
+      }
+    });
+  });
+  $('.modal').on('hide.bs.modal', function (e) {
+    $('.modal .modal-dialog').attr('class', 'modal-dialog modal-sm');
+  });
+});
+$(document).ready(function () {
+  $('#editTag').on('show.bs.modal', function (e) {
+    $('.modal .modal-dialog').attr('class', 'modal-dialog modal-sm');
+    document.getElementById("load-edit-tag").style.display = "block";
+    document.getElementById("edit-tag").style.display = "none";
+    const id = $(e.relatedTarget).data('id');
+    $.ajax({
+      type: 'post',
+      url: 'dashboard/modul/data-berita/modal/ubah_tag_berita',
+      data: { 'id': id },
+      success: function (data) {
+        document.getElementById("load-edit-tag").style.display = "none";
+        document.getElementById("edit-tag").style.display = "block";
+        $('.edit-tag').html(data);
+      }
+    });
+  });
+  $('.modal').on('hide.bs.modal', function (e) {
+    $('.modal .modal-dialog').attr('class', 'modal-dialog modal-sm');
+  });
+});
+$(document).ready(function () {
+  $('#delTag').on('show.bs.modal', function (e) {
+    $('.modal .modal-dialog').attr('class', 'modal-dialog modal-sm');
+    document.getElementById("load-del-tag").style.display = "block";
+    document.getElementById("del-tag").style.display = "none";
+    const id = $(e.relatedTarget).data('id');
+    $.ajax({
+      type: 'post',
+      url: 'dashboard/modul/data-berita/modal/hapus_tag_berita',
+      data: { 'id': id },
+      success: function (data) {
+        document.getElementById("load-del-tag").style.display = "none";
+        document.getElementById("del-tag").style.display = "block";
+        $('.del-tag').html(data);
+      }
+    });
+  });
+  $('.modal').on('hide.bs.modal', function (e) {
+    $('.modal .modal-dialog').attr('class', 'modal-dialog modal-sm');
+  });
+});
+$(document).ready(function () {
+  $('#addBerita').on('show.bs.modal', function (e) {
+    $('.modal .modal-dialog').attr('class', 'modal-dialog modal-md');
+    document.getElementById("load-add-berita").style.display = "block";
+    document.getElementById("add-berita").style.display = "none";
+    $.ajax({
+      url: 'dashboard/modul/data-berita/modal/tambah_berita',
+      success: function (data) {
+        document.getElementById("load-add-berita").style.display = "none";
+        document.getElementById("add-berita").style.display = "block";
+        $('.add-berita').html(data);
+        $('#isi_berita').summernote({
+          placeholder: 'Deskripsi berita',
+          height: 100,
+          toolbar: [
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']]
+          ]
+        });
+      }
+    });
+  });
+  $('.modal').on('hide.bs.modal', function (e) {
+    $('.modal .modal-dialog').attr('class', 'modal-dialog modal-md');
+  });
+});
+$(document).ready(function () {
+  $('#editBerita').on('show.bs.modal', function (e) {
+    $('.modal .modal-dialog').attr('class', 'modal-dialog modal-md');
+    document.getElementById("load-edit-berita").style.display = "block";
+    document.getElementById("edit-berita").style.display = "none";
+    const id = $(e.relatedTarget).data('id');
+    $.ajax({
+      type: 'post',
+      url: 'dashboard/modul/data-berita/modal/ubah_berita',
+      data: { 'id': id },
+      success: function (data) {
+        document.getElementById("load-edit-berita").style.display = "none";
+        document.getElementById("edit-berita").style.display = "block";
+        $('.edit-berita').html(data);
+        $('#ubah_isi_berita').summernote({
+          placeholder: 'Deskripsi berita',
+          height: 100,
+          toolbar: [
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']]
+          ]
+        });
+      }
+    });
+  });
+  $('.modal').on('hide.bs.modal', function (e) {
+    $('.modal .modal-dialog').attr('class', 'modal-dialog modal-md');
+  });
+});
+$(document).ready(function () {
+  $('#delBerita').on('show.bs.modal', function (e) {
+    $('.modal .modal-dialog').attr('class', 'modal-dialog modal-md');
+    document.getElementById("load-del-berita").style.display = "block";
+    document.getElementById("del-berita").style.display = "none";
+    const id = $(e.relatedTarget).data('id');
+    $.ajax({
+      type: 'post',
+      url: 'dashboard/modul/data-berita/modal/hapus_berita',
+      data: { 'id': id },
+      success: function (data) {
+        document.getElementById("load-del-berita").style.display = "none";
+        document.getElementById("del-berita").style.display = "block";
+        $('.del-berita').html(data);
+        $('#hapus_isi_berita').summernote("disable");
+      }
+    });
+  });
+  $('.modal').on('hide.bs.modal', function (e) {
+    $('.modal .modal-dialog').attr('class', 'modal-dialog modal-md');
+  });
+});
